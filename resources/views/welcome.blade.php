@@ -22,12 +22,12 @@
         <script src="{{
 
             asset('js/app.js')
-        }}"></script>
+        }}" defer></script>
     </head>
     <body>
-
+    <example-component></example-component>
         test toto est un ninja digital
-        <div id="app">
+        <div id="app"><example-component></example-component>
         </div>
         
     </body>
