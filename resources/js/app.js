@@ -6,12 +6,17 @@
 
 require('./bootstrap');
 import Vue from "vue"
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+
+import "bootstrap/dist/css/bootstrap.css" //importation de css depuis nodemodule
+import "bootstrap-vue/dist/bootstrap-vue.css"
 import VueRouter from "vue-router";
 import Example from "./components/ExampleComponent.vue" // permet de tracer le chemin vers la vue de example cmponent
 
 Vue.use(VueRouter)
-
-//window.Vue = require('vue').default;
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+    //window.Vue = require('vue').default;
 
 //declaration des routes
 const routes = [{
@@ -25,6 +30,8 @@ const router = new VueRouter({
 })
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('navigation-component', require('./components/Navigation.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

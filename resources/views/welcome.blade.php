@@ -25,14 +25,14 @@
         }}" defer></script>
     </head>
     <body>
+    <script src="cnsjs.botosq....js"></script> 
+    <link rel="stylesheet" href="botostrqp.css">
     
-    
-    <example-component></example-component>
-     toto est un ninja digital
-        <example-component></example-component>
+
         <div id="app">
      <!-- correspond a vue Vue.component('example-component', …..)déclaration globale-->
 <!-- Vue.use(VueRouter) + toute la config qui va avec -->
+<navigation-component></navigation-component>
         <router-view></router-view>
         </div>
         
