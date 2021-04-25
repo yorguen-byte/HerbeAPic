@@ -25,9 +25,15 @@
         }}" defer></script>
     </head>
     <body>
+    
+    
     <example-component></example-component>
-        test toto est un ninja digital
-        <div id="app"><example-component></example-component>
+     toto est un ninja digital
+        <example-component></example-component>
+        <div id="app">
+     <!-- correspond a vue Vue.component('example-component', …..)déclaration globale-->
+<!-- Vue.use(VueRouter) + toute la config qui va avec -->
+        <router-view></router-view>
         </div>
         
     </body>
