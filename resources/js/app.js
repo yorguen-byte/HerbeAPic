@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.css" //importation de css depuis nodemodule
 import "bootstrap-vue/dist/bootstrap-vue.css"
 import VueRouter from "vue-router";
 import PageProduits from "./components/PageProduits.vue" // permet de tracer le chemin vers la vue de example cmponent
+import PagePanier from "./components/panier/PagePanier.vue";
 import Index from "./components/Index.vue"
 import { template } from "lodash";
 
@@ -22,11 +23,16 @@ Vue.use(IconsPlugin)
 
 //declaration des routes
 const routes = [{
-    path: "/produits", // produits
-    component: PageProduits,
-    name: 'example'
-        //router qui va gerer tout ça
-}]
+        path: "/produits", // produits
+        component: PageProduits,
+        name: 'example'
+            //router qui va gerer tout ça
+    },
+    {
+        path: "/panier",
+        component: PagePanier
+    }
+]
 const router = new VueRouter({
     routes,
 })
