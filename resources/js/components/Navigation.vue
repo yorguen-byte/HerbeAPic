@@ -3,13 +3,13 @@
 <template>
     <div>
   <b-navbar toggleable="lg" type="dark" variant="info">
-    <b-navbar-brand href="#">ZEB A PIK</b-navbar-brand>
+    <b-navbar-brand to="/">ZEB A PIK</b-navbar-brand>
 
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
+    <router-link to="/">Accueil</router-link>
     <b-collapse id="nav-collapse" is-nav>
       <b-navbar-nav>
-        <b-nav-item href="#">Produit</b-nav-item>
+        <b-nav-item to="/produits">Produit</b-nav-item>
         <b-nav-item href="#" disabled>Login</b-nav-item>
       </b-navbar-nav>
 
