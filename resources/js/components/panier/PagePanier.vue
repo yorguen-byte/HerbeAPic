@@ -6,12 +6,13 @@
                     <h1>Recapitulatif</h1>
                 </div>
                 <onglet>
-                    <onglet-item>01.Recapitulatif</onglet-item>
-                    <onglet-item>02.Adresse</onglet-item>
-                    <onglet-item>03.Paiment</onglet-item>
+                   <!-- le v-if veut dire affichage v-on c'est pour les evenements -->
+                    <onglet-item v-on:click="step = 1">01.Recapitulatif</onglet-item>
+                    <onglet-item v-on:click="step = 2">02.Adresse</onglet-item>
+                    <onglet-item v-on:click="step = 3">03.Paiment</onglet-item>
                 </onglet>
-                <recapitulatif></recapitulatif>
-                <adresse></adresse>
+                <recapitulatif v-if="step === 1"></recapitulatif>
+                <adresse v-else-if="step === 2"></adresse>
             </div>
         </div>
     </div>
@@ -23,12 +24,16 @@ import Recapitulatif from './Recapitulatif';
 import {BNav, BNavItem}from 'bootstrap-vue';
 import Adresse from './adresse.vue';
 export default{
-    
+        data(){
+            return {
+                step: 1
+            }
+        },
         components : {
             Recapitulatif,
             Onglet: BNav,
             OngletItem: BNavItem,
-            adresse : Adresse
+            Adresse : Adresse
         }
         
     
