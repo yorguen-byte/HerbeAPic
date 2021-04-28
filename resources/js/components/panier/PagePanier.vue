@@ -11,6 +11,7 @@
                     <onglet-item>03.Paiment</onglet-item>
                 </onglet>
                 <recapitulatif></recapitulatif>
+                <adresse></adresse>
             </div>
         </div>
     </div>
@@ -20,12 +21,14 @@
 
 import Recapitulatif from './Recapitulatif';
 import {BNav, BNavItem}from 'bootstrap-vue';
+import Adresse from './adresse.vue';
 export default{
     
         components : {
             Recapitulatif,
             Onglet: BNav,
-            OngletItem: BNavItem
+            OngletItem: BNavItem,
+            adresse : Adresse
         }
         
     
