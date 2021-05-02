@@ -15,7 +15,7 @@ import PageProduits from "./components/PageProduits.vue" // permet de tracer le 
 import PagePanier from "./components/panier/PagePanier.vue";
 import Index from "./components/Index.vue"
 import { template } from "lodash";
-
+import PageAdmin from "./components/PageAdmin"
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
@@ -31,8 +31,15 @@ const routes = [{
     {
         path: "/panier",
         component: PagePanier
+    },
+    {
+        path: "/PageAdmin",
+        component: PageAdmin
+
     }
 ]
+
+
 const router = new VueRouter({
     routes,
 })
