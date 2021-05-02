@@ -22,7 +22,7 @@
                                   Entrez vos identifiants
                               </small>
                           </div>
-                          <b-form>
+                          <b-form @submit="onSubmit">
                               <b-form-group label="Prenom" is-text> 
                                     <b-form-input placeholder="prenom"></b-form-input>
                                 </b-form-group>
@@ -39,8 +39,12 @@
                                 </b-form-group>  
                                 <b-form-group label="confirmezMotDePasse"> 
                                     <b-form-input placeholder="confirmezMotDePasse"></b-form-input>
-                                </b-form-group>  
+                                </b-form-group>
+                                 <div class="text-center">
+                             <b-button variant="primary" type="submit" class="my-4">Login</b-button>
+                        </div>  
                           </b-form>
+                         
                       </b-card-body>
                   </b-card>
               </b-col>
@@ -51,8 +55,19 @@
 
 <script>
 export default {
-
+ methods:{
+     async onSubmit(evt){
+         evt.preventDefault();
+         await axios.get("/sanctum/csrf-cookie")
+         await axios.post("/login",{
+             name: "Mr. Matteo Johns III",
+             email: "ruecker.grace@example.org",
+             password: "password"
+         })
+     }
+ }
 }
+
 </script>
 
 <style>
