@@ -58,12 +58,31 @@ export default {
  methods:{
      async onSubmit(evt){
          evt.preventDefault();
-         await axios.get("/sanctum/csrf-cookie")
-         await axios.post("/login",{
-             name: "Mr. Matteo Johns III",
-             email: "ruecker.grace@example.org",
-             password: "password"
-         })
+         try {
+             await axios.get("/sanctum/csrf-cookie")
+             await axios.post("/login",{
+                 name: "Mr. Matteo Johns III",
+                 email: "ruecker.grace@example.org",
+                 password: "password"
+             })
+         } catch(err){
+             console.log("*************err********");
+             console.log(err);
+             console.log("*************err********");
+         }
+
+        // axios.get('/sanctum/csrf-token')
+        // .then(res => {
+        //     console.log("*************res********");
+        //     console.log(res);
+        //     console.log("*************res********");
+        // })
+        // .catch(err => {
+        //     console.log("*************err********");
+        //     console.log(err);
+        //     console.log("*************err********");
+        // })
+        
      }
  }
 }
