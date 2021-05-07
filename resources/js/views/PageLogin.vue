@@ -28,14 +28,14 @@
                                 </b-form-group>
 
                                 <b-form-group label="Nom"> 
-                                    <b-form-input placeholder="nom"></b-form-input>
+                                    <b-form-input v-model="name" placeholder="nom"></b-form-input>
                                 </b-form-group>
 
                                 <b-form-group label="email"> 
-                                    <b-form-input placeholder="Email"></b-form-input>
+                                    <b-form-input v-model="email" placeholder="Email"></b-form-input>
                                 </b-form-group>  
                                 <b-form-group label="MotDePasse"> 
-                                    <b-form-input type="password" placeholder="confirmezMotDePasse"></b-form-input>
+                                    <b-form-input v-model="password" type="password" placeholder="confirmezMotDePasse"></b-form-input>
                                 </b-form-group>  
                                 <b-form-group label="confirmezMotDePasse"> 
                                     <b-form-input placeholder="confirmezMotDePasse"></b-form-input>
@@ -55,16 +55,26 @@
 
 <script>
 export default {
+    data:{ name: '',
+    email : '',
+    password: ""
+    },
  methods:{
      async onSubmit(evt){
          evt.preventDefault();
          try {
              await axios.get("/sanctum/csrf-cookie")
-             await axios.post("/login",{
-                 name: "Mr. Matteo Johns III",
-                 email: "ruecker.grace@example.org",
-                 password: "password"
+             const user = await axios.post("/login",{
+                 name: this.name,
+                 email: this.email,
+                 password: this.password
+                //  name: "Mr. Matteo Johns III",
+                //  email: "ruecker.grace@example.org",
+                //  password: "password"
              })
+            console.log(user);
+             await localStorage.setItem("user",JSON.stringify(user));
+             this.$router.push({path: '/home'})
          } catch(err){
              console.log("*************err********");
              console.log(err);

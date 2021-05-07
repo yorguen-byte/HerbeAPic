@@ -3,6 +3,8 @@ import PageProduits from "./../components/PageProduits.vue" // permet de tracer 
 import PageAdmin from "./../components/PageAdmin"
 import PagePanier from "./../components/panier/PagePanier.vue";
 import PageLogin from "./../views/PageLogin.vue"
+import PageAccueil from "./../components/PageAccueil"
+
 //declaration des routes
 const routes = [{
         path: "/produits", // produits
@@ -24,6 +26,10 @@ const routes = [{
     {
         path: "/login",
         component: PageLogin
+    },
+    {
+        path: "/",
+        component: PageAccueil
     }
 ]
 const router = new VueRouter({
