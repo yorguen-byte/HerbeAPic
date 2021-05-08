@@ -11,7 +11,6 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .setPublicPath('../../public')
+mix.js('resources/js/app.js', 'public/js') //methode avec deux arguments
     .vue()
     .sass('resources/sass/app.scss', 'public/css');

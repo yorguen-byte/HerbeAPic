@@ -1,5 +1,6 @@
 <template>
-  <div>
+    
+  <div id="page-accueil">
     <b-carousel
       id="carousel-1"
       v-model="slide"
@@ -48,13 +49,24 @@
       </b-carousel-slide> -->
     </b-carousel>
 
+<b-container class="my-5 ">
+  <div class="product-container">
+      <the-name></the-name>
+  </div>
+  
+      </b-container>
   
   </div>
 </template>
 
 <script>
 
+import contientCode from "./accueil/product_card.vue";
+
   export default {
+      components: {
+          TheName: contientCode
+      },
     data() {
       return {
         slide: 0,
@@ -72,5 +84,7 @@
   }
 </script>
 <style scoped>
-
+#page-accueil{
+  background-color: #e3e3d8;
+}
 </style>
