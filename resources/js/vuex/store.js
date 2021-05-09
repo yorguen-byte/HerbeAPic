@@ -1,8 +1,8 @@
 export default {
     state: {
         count: 0,
-        isloggedin: false,
-        user: null
+        isLoggedIn: false,
+        user: {}
     },
     mutations: {
         increment(state) {
@@ -12,7 +12,14 @@ export default {
         setUser(state, payload) {
             console.info(payload)
             state.user = payload
-            state.isloggedin = true
+        },
+        setLoggedIn(state, payload) {
+
+            state.isLoggedIn = true
         }
+
+    },
+    actions: {
+
     }
 }

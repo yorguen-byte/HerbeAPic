@@ -71,7 +71,7 @@ export default {
       evt.preventDefault();
       try {
         await axios.get("/sanctum/csrf-cookie");
-        const user = await axios.post("/login", {
+        const response = await axios.post("/login", {
           name: this.name,
           email: this.email,
           password: this.password,
@@ -79,8 +79,10 @@ export default {
           //  email: "ruecker.grace@example.org",
           //  password: "password"
         });
-        console.log(user);
-        await localStorage.setItem("user", JSON.stringify(user));
+        const user = response.data
+        this.$store.commit("setLoggedIn", true)
+        this.$store.commit('setUser',user)
+        //await localStorage.setItem("user", JSON.stringify(user));
         this.$router.push({ path: "/home" });
       } catch (err) {
         console.log("*************err********");

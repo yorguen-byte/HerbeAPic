@@ -27,12 +27,6 @@ const store = new Vuex.Store(storeDefiniton)
 
 //window.Vue = require('vue').default;
 
-
-store.commit("increment")
-
-store.commit("setUser", { name: "Yorguen" })
-
-
 Vue.component('navigation-component', require('./components/Navigation.vue').default);
 
 /**
