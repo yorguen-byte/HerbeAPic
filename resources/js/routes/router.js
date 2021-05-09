@@ -8,7 +8,7 @@ import PageAccueil from "./../components/PageAccueil"
 
 //declaration des routes
 const routes = [{
-        path: "/produits", // produits
+        path: "/produits/:id", // produits
         component: PageProduits,
         name: 'produits'
             //router qui va gerer tout ça

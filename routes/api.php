@@ -26,3 +26,7 @@ Route::get("adress", function (Request $data) {
 Route::get("products", function (Request $data) {  // axios.get('api/product')
     return Product::all();
 });
+
+Route::get("products/{id}", function (Request $data, $unid) { // axios .get("/api/product/123) 123 = id
+    return Product::findOrFail($unid);
+});
