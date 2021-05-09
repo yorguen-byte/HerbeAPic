@@ -13,7 +13,9 @@
         <b-nav-item to="/produits">Produit</b-nav-item>
  
         <b-nav-item to="/panier">Panier</b-nav-item>
-        <b-nav-item to="/login">Login</b-nav-item>
+        <b-nav-item to="/auth/login">Login</b-nav-item>
+        <b-nav-item to="/auth/register">Register</b-nav-item>
+        
         <b-nav-item to="/PageAdmin">Admin</b-nav-item>
         </b-navbar-nav>
      

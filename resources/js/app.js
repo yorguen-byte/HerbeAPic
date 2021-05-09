@@ -6,6 +6,7 @@
 
 require('./bootstrap');
 import Vue from "vue"
+import Vuex from 'vuex'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 import "bootstrap/dist/css/bootstrap.css" //importation de css depuis nodemodule
@@ -15,14 +16,21 @@ import VueRouter from "vue-router";
 import Index from "./components/Index.vue"
 import { template } from "lodash";
 import router from "./routes/router";
+import storeDefiniton from './vuex/store';
+//const storeDefiniton = require("./vuex/store.js").default
 
+Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
-    //window.Vue = require('vue').default;
+const store = new Vuex.Store(storeDefiniton)
+
+//window.Vue = require('vue').default;
 
 
+store.commit("increment")
 
+store.commit("setUser", { name: "Yorguen" })
 
 
 Vue.component('navigation-component', require('./components/Navigation.vue').default);
@@ -36,6 +44,7 @@ Vue.component('navigation-component', require('./components/Navigation.vue').def
 const app = new Vue({
     el: '#app',
     router: router,
+    store: store,
     components: {
         Index: Index
     }
