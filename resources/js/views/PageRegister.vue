@@ -44,17 +44,20 @@
                 </b-form-group>
                 <b-form-group label="confirmezMotDePasse">
                   <b-form-input
+                    v-model="password_confirmation"
                     placeholder="confirmezMotDePasse"
                   ></b-form-input>
                 </b-form-group>
                 <div class="text-center">
                   <b-button variant="primary" type="submit" class="my-4"
-                    >Login</b-button
+                    >S'ENREGISTRER</b-button
                   >
                 </div>
                 <div>
-                    Si vous avez déja un compte? 
-                    <router-link to="/auth/login" class="font-weight-bold">Se connecter</router-link>
+                  Si vous avez déja un compte?
+                  <router-link to="/auth/login" class="font-weight-bold"
+                    >Se connecter</router-link
+                  >
                 </div>
               </b-form>
             </b-card-body>
@@ -66,22 +69,18 @@
 </template>
 
 <script>
-
 export default {
   data: { name: "", email: "", password: "" },
-  beforeCreate() {
-      
-  },
+  beforeCreate() {},
   methods: {
     async onSubmit(evt) {
-
       evt.preventDefault();
       try {
-        await axios.get("/sanctum/csrf-cookie");
-        const user = await axios.post("/login", {
+        const user = await axios.post("/register", {
           name: this.name,
           email: this.email,
           password: this.password,
+          password_confirmation: this.password_confirmation,
           //  name: "Mr. Matteo Johns III",
           //  email: "ruecker.grace@example.org",
           //  password: "password"
