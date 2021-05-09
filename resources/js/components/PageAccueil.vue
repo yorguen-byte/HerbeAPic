@@ -1,5 +1,4 @@
 <template>
-    
   <div id="page-accueil">
     <b-carousel
       id="carousel-1"
@@ -10,21 +9,17 @@
       background="#ababab"
       img-width="1024"
       img-height="200"
-      style="text-shadow: 1px 1px 2px #333;height: 250px;"
+      style="text-shadow: 1px 1px 2px #333; height: 250px"
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
-
       <!-- Slides with custom text -->
       <b-carousel-slide img-src="../storage/img/meilleur_prix.png">
-         
       </b-carousel-slide>
 
       <!-- Slides with image only -->
       <b-carousel-slide img-src="../storage/img/huge.png"></b-carousel-slide>
-      <b-carousel-slide img-src="../storage/img/huge.png">
-         
-      </b-carousel-slide>
+      <b-carousel-slide img-src="../storage/img/huge.png"> </b-carousel-slide>
 
       <!-- Slides with img slot -->
       <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
@@ -36,7 +31,7 @@
             height="200"
             src="../storage/img/huge.png"
             alt="image slot"
-          >
+          />
         </template>
       </b-carousel-slide>
 
@@ -49,42 +44,60 @@
       </b-carousel-slide> -->
     </b-carousel>
 
-<b-container class="my-5 ">
-  <div class="product-container">
-      <the-name></the-name>
-  </div>
-  
-      </b-container>
-  
+    <b-container class="my-5 d-flex justify-content-center flex-wrap">
+      <div
+        v-for="productItem in productList"
+        class="product-container m-2"
+        v-bind:key="productItem.id"
+      >
+        <product
+          :name="productItem.product_name"
+          :price="productItem.product_price"
+        ></product>
+      </div>
+    </b-container>
   </div>
 </template>
 
 <script>
-
 import contientCode from "./accueil/product_card.vue";
 
-  export default {
-      components: {
-          TheName: contientCode
-      },
-    data() {
-      return {
-        slide: 0,
-        sliding: null
-      }
+export default {
+  components: {
+    Product: contientCode,
+  },
+  data() {
+    return {
+      slide: 0,
+      sliding: null,
+      productList: [],
+    };
+  },
+
+  mounted() {
+    axios
+      .get("/api/products") // interroge route qck Route::get('products')
+      .then((res) => (this.productList = res.data))
+      .catch(console.log);
+  },
+
+  methods: {
+    onSlideStart(slide) {
+      this.sliding = true;
     },
-    methods: {
-      onSlideStart(slide) {
-        this.sliding = true
-      },
-      onSlideEnd(slide) {
-        this.sliding = false
-      }
-    }
-  }
+    onSlideEnd(slide) {
+      this.sliding = false;
+    },
+  },
+};
 </script>
 <style scoped>
-#page-accueil{
+#page-accueil {
   background-color: #e3e3d8;
+}
+
+.product-container {
+  display: inline-flex;
+  width: fit-content;
 }
 </style>

@@ -23,6 +23,6 @@ Route::get("adress", function (Request $data) {
     return Adress::all();
 });
 
-Route::get("product", function (Request $data) {  // axios.get('api/product')
+Route::get("products", function (Request $data) {  // axios.get('api/product')
     return Product::all();
 });
