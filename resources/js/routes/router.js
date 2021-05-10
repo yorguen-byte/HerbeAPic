@@ -39,6 +39,8 @@ const routes = [{
 ]
 const router = new VueRouter({
     routes,
+    // permet denlever le hash tag
+    mode: 'history'
 });
 
 export default router;
