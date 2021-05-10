@@ -1,11 +1,18 @@
 <template>
   <div class="wrapper">
     <div class="content-container">
-      <div class="img-wrapper"></div>
+      <div
+        class="img-wrapper"
+        :style="{
+          'background-image': `url(../storage/img/produits/${storage_url})`,
+        }"
+      ></div>
       <div class="bottom">
         <div class="left">
           <div class="details">
-            <h3 class="product-name">{{ name }}</h3>
+            <h3 @click="goToProduct(product.id)" class="product-name">
+              {{ name }}
+            </h3>
             <p class="product-price">{{ price }} les 3 flacons</p>
           </div>
           <div class="buy">
@@ -24,7 +31,13 @@
 
 <script>
 export default {
-  props: ["price", "name"],
+  props: ["price", "name", "storage_url", "product"],
+  methods: {
+    goToProduct(id) {
+      // this.$router.push({ path: "produits/" + id });
+      this.$router.push({ name: "produits", params: { id: id } });
+    },
+  },
 };
 </script>
 

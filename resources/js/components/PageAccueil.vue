@@ -53,6 +53,8 @@
         <product
           :name="productItem.product_name"
           :price="productItem.product_price"
+          :storage_url="productItem.product_storage_url"
+          :product="productItem"
         ></product>
       </div>
     </b-container>

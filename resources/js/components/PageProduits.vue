@@ -5,6 +5,8 @@
     :description="description"
     :short_description="short_description"
     :name="name"
+    :storage_url="storage_url"
+    :web_url="web_url"
   ></produit>
 </template>
 
@@ -20,6 +22,8 @@ export default {
       description: "",
       short_description: "",
       name: "",
+      storage_url: "",
+      web_url: "",
     };
   },
   components: {
@@ -37,6 +41,8 @@ export default {
       this.short_description = product.short_description;
       this.name = product.product_name;
       this.description = product.product_description;
+      this.storage_url = product.product_storage_url;
+      this.web_url = product.product_web_url;
     } catch (err) {
       console.log(err);
     }

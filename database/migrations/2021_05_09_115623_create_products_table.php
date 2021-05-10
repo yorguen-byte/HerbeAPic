@@ -20,6 +20,8 @@ class CreateProductsTable extends Migration
             $table->text("product_description");
             $table->unsignedInteger("product_price");
             $table->text("product_short_description");
+            $table->text("product_storage_url");
+            $table->text("product_web_url");
         });
     }
 

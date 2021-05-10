@@ -9,14 +9,13 @@
                 class="jqzoom"
                 title=""
                 rel="gal1"
-                href="https://www.christiandemontaguere.com/3837-thickbox_default/phytobokaz-virapic-60ml.jpg"
                 itemprop="url"
                 style="outline-style: none; text-decoration: none"
               >
                 <div class="zoomPad">
                   <img
                     itemprop="image"
-                    :src="srcVariable"
+                    :src="web_url"
                     title="Phytobokaz virapic 60ml"
                     alt="Phytobokaz virapic 60ml"
                     style="opacity: 1"
@@ -57,7 +56,7 @@
                         style="width: 100%; height: 458px"
                       >
                         <img
-                          src="https://www.christiandemontaguere.com/3837-thickbox_default/phytobokaz-virapic-60ml.jpg"
+                          :src="web_url"
                           style="
                             position: absolute;
                             border: 0px;
@@ -103,7 +102,15 @@
 </template>
 <script>
 export default {
-  props: ["srcVariable", "price", "name", "description", "short_description"],
+  props: [
+    "srcVariable",
+    "price",
+    "name",
+    "description",
+    "short_description",
+    "web_url",
+    "storage_url",
+  ],
   data() {},
 };
 </script>
