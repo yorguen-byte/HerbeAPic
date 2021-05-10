@@ -16,7 +16,7 @@
             <p class="product-price">{{ price }} les 3 flacons</p>
           </div>
           <div class="buy">
-            <b-icon icon="cart"></b-icon>
+            <b-icon icon="cart" @click="addToBasket(product)"></b-icon>
           </div>
         </div>
       </div>
@@ -36,6 +36,9 @@ export default {
     goToProduct(id) {
       // this.$router.push({ path: "produits/" + id });
       this.$router.push({ name: "produits", params: { id: id } });
+    },
+    addToBasket(product) {
+      this.$store.commit("ajoutAuPanier", product);
     },
   },
 };

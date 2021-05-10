@@ -21,6 +21,9 @@
 
         <!-- Right aligned nav items -->
         <b-navbar-nav class="ml-auto">
+          <b-nav-item to="/PageAdmin">
+            <b-badge pill variant="success">{{ nombreArticles }}</b-badge>
+          </b-nav-item>
           <b-nav-item-dropdown right>
             <!-- Using 'button-content' slot -->
             <template #button-content>
@@ -36,7 +39,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapGetters, mapState } from "vuex"; // SERT à CONNECTER LE COMPOSANT AU STORE
 import { BNav } from "bootstrap-vue"; // recuperation du composant user coté back pour reinjection dans le composant vue js
 // mounted executé par vue
 export default {
@@ -47,11 +50,14 @@ export default {
     ...mapState({
       user: "user",
     }),
+    ...mapGetters({
+      nombreArticles: "articles",
+    }),
   },
   components: {
     BNav,
   },
-  mounted() {
+  mounted: function () {
     //const JSONuser = localStorage.getItem("user")
     //const user = JSON.parse(JSONuser);
     //this.userName = user ? user.data.name : "";
