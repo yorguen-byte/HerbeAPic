@@ -2,10 +2,11 @@
   <div class="wrapper">
     <div class="content-container">
       <div
-        class="img-wrapper"
+        class="img-wrapper cursor-pointer"
         :style="{
           'background-image': `url(../storage/img/produits/${storage_url})`,
         }"
+        v-on:click="goToProduct(product.id)"
       ></div>
       <div class="bottom">
         <div class="left">

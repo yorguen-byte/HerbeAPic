@@ -21,8 +21,6 @@
                 <small> Entrez vos identifiants </small>
               </div>
               <b-form @submit="onSubmit">
-               
-
                 <b-form-group label="Nom">
                   <b-form-input v-model="name" placeholder="nom"></b-form-input>
                 </b-form-group>
@@ -46,8 +44,10 @@
                   >
                 </div>
                 <div>
-                Si vous n'avez pas de compte? 
-                    <router-link to="/auth/register" class="font-weight-bold">S'enregister</router-link>
+                  Si vous n'avez pas de compte?
+                  <router-link to="/auth/register" class="font-weight-bold"
+                    >S'enregister</router-link
+                  >
                 </div>
               </b-form>
             </b-card-body>
@@ -59,15 +59,13 @@
 </template>
 
 <script>
-
 export default {
-  data: { name: "", email: "", password: "" },
-  beforeCreate() {
-      
+  data() {
+    return { name: "", email: "", password: "" };
   },
+  beforeCreate() {},
   methods: {
     async onSubmit(evt) {
-
       evt.preventDefault();
       try {
         await axios.get("/sanctum/csrf-cookie");
@@ -79,9 +77,9 @@ export default {
           //  email: "ruecker.grace@example.org",
           //  password: "password"
         });
-        const user = response.data
-        this.$store.commit("setLoggedIn", true)
-        this.$store.commit('setUser',user)
+        const user = response.data;
+        this.$store.commit("setLoggedIn", true);
+        this.$store.commit("setUser", user);
         //await localStorage.setItem("user", JSON.stringify(user));
         this.$router.push({ path: "/home" });
       } catch (err) {

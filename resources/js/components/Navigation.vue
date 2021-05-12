@@ -43,8 +43,8 @@ import { mapGetters, mapState } from "vuex"; // SERT à CONNECTER LE COMPOSANT A
 import { BNav } from "bootstrap-vue"; // recuperation du composant user coté back pour reinjection dans le composant vue js
 // mounted executé par vue
 export default {
-  data: {
-    userName: "",
+  data() {
+    return { userName: "" };
   },
   computed: {
     ...mapState({

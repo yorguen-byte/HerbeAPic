@@ -70,7 +70,9 @@
 
 <script>
 export default {
-  data: { name: "", email: "", password: "" },
+  data() {
+    return { name: "", email: "", password: "" };
+  },
   beforeCreate() {},
   methods: {
     async onSubmit(evt) {

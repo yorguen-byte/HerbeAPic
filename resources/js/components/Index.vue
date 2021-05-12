@@ -1,15 +1,14 @@
 <template>
-<div>
-<navigation-component></navigation-component>
+  <div>
+    <navigation-component></navigation-component>
     <router-view></router-view>
-    </div>
+    <global-style></global-style>
+  </div>
 </template>
 
 <script>
- //import { defineComponent } from 'vue-ootstrap'
+//import { defineComponent } from 'vue-ootstrap'
 export default {
-    components:{
-
-    }
-}
+  components: {},
+};
 </script>
