@@ -1,5 +1,9 @@
 <template>
   <div class="wrapper">
+    <!-- qctuelle,ent le toqster est geré pqr vue-toqsted. TODO utiliser la propriété visible -->
+    <b-toast id="success-ajout" v-if="/*notifications.length*/ true"
+      >Ajouté au panier</b-toast
+    >
     <div class="content-container">
       <div
         class="img-wrapper cursor-pointer"
@@ -31,15 +35,30 @@
 </template>
 
 <script>
+import { mapActions, mapState } from "vuex";
 export default {
   props: ["price", "name", "storage_url", "product"],
+  data() {
+    return {
+      ...mapState({
+        notifications: "notifications",
+      }),
+    };
+  },
   methods: {
+    ...mapActions(["addProductToCart"]),
     goToProduct(id) {
       // this.$router.push({ path: "produits/" + id });
       this.$router.push({ name: "produits", params: { id: id } });
     },
+
     addToBasket(product) {
-      this.$store.commit("ajoutAuPanier", product);
+      console.log(this);
+      //this.addProductToCart(product);
+      // this.$store.dispatch('addProductToCart', product);
+      //this.$store.commit("ajoutAuPanier", product);
+      //this.$bvToast.show("success-ajout");
+      //setTimeout(() )
     },
   },
 };

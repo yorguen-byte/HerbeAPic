@@ -8,6 +8,7 @@ require('./bootstrap');
 import Vue from "vue"
 import Vuex from 'vuex'
 import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
+import toasted from "vue-toasted";
 
 import "bootstrap/dist/css/bootstrap.css" //importation de css depuis nodemodule
 import "bootstrap-vue/dist/bootstrap-vue.css"
@@ -24,9 +25,12 @@ Vue.use(Vuex)
 Vue.use(VueRouter)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+    //Vue.use(ToastPlugin);
+Vue.use(toasted)
 const store = new Vuex.Store(storeDefiniton)
 
 //window.Vue = require('vue').default;
+window.Vue = Vue;
 
 Vue.component('navigation-component', require('./components/Navigation.vue').default);
 Vue.component('global-style', globalStyle)
