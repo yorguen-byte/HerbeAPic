@@ -23,6 +23,9 @@ export default {
 
         ajoutAuPanier(state, payload) {
             state.panier.articles.push(payload) // => quand le composant fait this.store.commit('ajoutPanier', unProduit)
+        },
+        supprimerDuPanier(state, payload) { //filter va trier les ids   (il garde les elements de array qui respectent la condition)
+            state.panier.articles = state.panier.articles.filter(article => article.id !== payload)
         }
 
     },

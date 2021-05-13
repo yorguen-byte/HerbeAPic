@@ -1,6 +1,30 @@
 <template>
   <div id="order-detail">
-    <b-table :items="panier.articles"></b-table>
+    <b-table :items="panier.articles" :fields="fields">
+      <template #cell(product_web_url)="row">
+        <b-img
+          thumbnail
+          fluid
+          class="recapitulatif-cell-img"
+          :src="row.item.product_web_url"
+          style="max-width: 80px"
+        />
+      </template>
+
+      <!-- template pour la colone prix -->
+      <template #cell(product_price)="rowData" style="vertical-align: middle">
+        <div class="recap-price">{{ rowData.item.product_price }}€</div>
+      </template>
+
+      <template #cell(action)="rowData" style="vertical-align: middle">
+        <b-icon
+          icon="trash-fill"
+          @click="deleteProduct(rowData.item.id)"
+          class="cursor-pointer"
+        ></b-icon>
+      </template>
+    </b-table>
+    <b-table :items="panier.articles"> </b-table>
   </div>
 </template>
 
@@ -10,12 +34,7 @@ import { mapState } from "vuex";
 export default {
   data() {
     return {
-      liste: [
-        { Produit: 40, Description: "Dickerson", total: "Macdonald" },
-        { Produit: 21, Description: "Larsen", total: "Shaw" },
-        { Produit: 89, Description: "Geneva", total: "Wilson" },
-        { Produit: 38, Description: "Jami", total: "Carney" },
-      ],
+      fields: ["product_web_url", "product_price", "product_name", "action"],
     };
   },
 
@@ -28,5 +47,19 @@ export default {
   components: {
     BTable,
   },
+  methods: {
+    deleteProduct(id) {
+      this.$store.commit("supprimerDuPanier", id);
+    },
+  },
 };
 </script>
+
+<style scoped>
+.recapitulatif-cell-img {
+  max-width: 80px;
+}
+#order-detail {
+  background: white;
+}
+</style>
