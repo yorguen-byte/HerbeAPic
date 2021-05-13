@@ -13,10 +13,14 @@
           <b-nav-item to="/produits">Produit</b-nav-item>
 
           <b-nav-item to="/panier">Panier</b-nav-item>
-          <b-nav-item to="/auth/login">Login</b-nav-item>
-          <b-nav-item to="/auth/register">Register</b-nav-item>
+          <b-nav-item to="/auth/login" v-if="Object.keys(user).length > 0"
+            >Login</b-nav-item
+          >
+          <b-nav-item to="/auth/register" v-if="Object.keys(use).length > 0"
+            >Register</b-nav-item
+          >
 
-          <b-nav-item to="/PageAdmin">Admin</b-nav-item>
+          <b-nav-item to="/PageAdmin" v-else>Admin</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->
@@ -30,7 +34,9 @@
               <em>{{ user.name }}</em>
             </template>
             <b-dropdown-item href="#">Profil</b-dropdown-item>
-            <b-dropdown-item href="#">Se déconnecter</b-dropdown-item>
+            <b-dropdown-item v-on:click="deconnexion()"
+              >Se déconnecter</b-dropdown-item
+            >
           </b-nav-item-dropdown>
         </b-navbar-nav>
       </b-collapse>
@@ -57,6 +63,18 @@ export default {
   components: {
     BNav,
   },
+  methods: {
+    // ici on declare les methods (evenment, click)
+    deconnexion(e) {
+      try {
+        axios.post("/logout");
+        this.$store.dispatch("deconnexion");
+      } catch (error) {
+        this.$store.dispatch("deconnexion");
+      }
+    },
+  },
+  watch: {},
   mounted: function () {
     //const JSONuser = localStorage.getItem("user")
     //const user = JSON.parse(JSONuser);

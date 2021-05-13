@@ -12,7 +12,7 @@ export default {
         notifications: []
     },
     mutations: {
-        increment(state) {
+        increment(state) { // pour qppeler cette mutation je fais this.$store.commit("increment")
             console.warn(state)
             state.count++
         },
@@ -23,6 +23,9 @@ export default {
         setLoggedIn(state, payload) {
 
             state.isLoggedIn = true
+        },
+        setLoggedOut(state) {
+            state.isLoggedIn = false
         },
 
         ajoutAuPanier(state, payload) {
@@ -41,7 +44,7 @@ export default {
 
     },
     actions: {
-        ajoutNotification(context, payload) {
+        ajoutNotification(context, payload) { // pour apeler cette action je fais $this.$store.dispatch("ajoutNotification)")  ou je fais ...mapAction
             context.commit('ajoutnotification', payload)
         },
         addProductToCart(context, payload) {
@@ -52,6 +55,10 @@ export default {
             Vue.toasted.show('<div><i class="check"></i>mon ajout est ok </div>');
             //Vue.bvToast.show("success-ajout");
 
+        },
+        deconnexion(context, payload) {
+            context.commit('setUser', {});
+            context.commit('setLoggedOut');
         }
     },
     getters: {
