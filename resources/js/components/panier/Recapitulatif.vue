@@ -1,6 +1,10 @@
 <template>
   <div id="order-detail">
-    <b-table :items="panier.articles" :fields="fields">
+    <b-table
+      :items="panier.articles"
+      :fields="fields"
+      v-if="panier.articles.length"
+    >
       <template #cell(product_web_url)="row">
         <b-img
           thumbnail
@@ -24,6 +28,7 @@
         ></b-icon>
       </template>
     </b-table>
+    <p v-else>Votre panier est vide</p>
     <b-table :items="panier.articles"> </b-table>
   </div>
 </template>

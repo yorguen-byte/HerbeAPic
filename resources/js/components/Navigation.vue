@@ -13,10 +13,10 @@
           <b-nav-item to="/produits">Produit</b-nav-item>
 
           <b-nav-item to="/panier">Panier</b-nav-item>
-          <b-nav-item to="/auth/login" v-if="Object.keys(user).length > 0"
+          <b-nav-item to="/auth/login" v-if="isLoggedIn === false"
             >Login</b-nav-item
           >
-          <b-nav-item to="/auth/register" v-if="Object.keys(use).length > 0"
+          <b-nav-item to="/auth/register" v-if="isLoggedIn === false"
             >Register</b-nav-item
           >
 
@@ -55,6 +55,7 @@ export default {
   computed: {
     ...mapState({
       user: "user",
+      isLoggedIn: "isLoggedIn",
     }),
     ...mapGetters({
       nombreArticles: "articles",
