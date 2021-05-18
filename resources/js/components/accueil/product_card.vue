@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper product_card">
     <!-- qctuelle,ent le toqster est geré pqr vue-toqsted. TODO utiliser la propriété visible -->
     <b-toast id="success-ajout" v-if="/*notifications.length*/ true"
       >Ajouté au panier</b-toast
@@ -28,7 +28,10 @@
     </div>
     <div class="inside-description">
       <div class="info-wrapper">
-        <b-icon icon="info"> </b-icon>
+        <b-icon icon="info-circle"> </b-icon>
+      </div>
+      <div class="inside-description-text">
+        {{ product.product_description }}
       </div>
     </div>
   </div>
@@ -54,7 +57,7 @@ export default {
 
     addToBasket(product) {
       console.log(this);
-      //this.addProductToCart(product);
+      this.addProductToCart(product);
       // this.$store.dispatch('addProductToCart', product);
       //this.$store.commit("ajoutAuPanier", product);
       //this.$bvToast.show("success-ajout");
@@ -73,10 +76,11 @@ export default {
   transition: transform 0.5s, box-shadow 0.5s;
   position: relative;
   overflow: hidden;
+  border: 2px solid #efefef;
 }
 .wrapper:hover {
-  transform: scale(0.98);
-  box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2);
+  transform: scale(0.97);
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
 }
 .content-container {
   width: 100%;
@@ -91,6 +95,9 @@ export default {
   height: 80%;
   width: 100%;
   background: url(https://th.bing.com/th/id/Rc26a9974b1e0ae2ae7236fd6b5b104fc?rik=z1jvycgbZ4GzHw&pid=ImgRaw);
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-size: contain; */
 }
 .bottom {
   width: 100%;
@@ -121,6 +128,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer
 }
 .buy:hover {
   /* background:#46f84c; */
@@ -144,6 +152,40 @@ export default {
   position: absolute;
   top: -70px;
   right: -70px;
+  transition: all 0.5s, border-radius 0.5s, top 0.5s;
+
+  overflow: hidden;
+}
+
+.inside-description:hover {
+  width: 100%;
+  right: 0;
+  top: 0;
+  border-radius: 0;
+  height: 80%;
+  background: #ccc;
+}
+
+.inside-description:hover .info-wrapper {
+  opacity: 0;
+  right: 15px;
+  top: 15px;
+}
+
+.inside-description:hover .inside-description-text {
+  opacity: 1;
+  transform: scale(1);
+  transform: translateY(0);
+}
+
+.inside-description-text {
+  padding: 5%;
+  opacity: 1;
+  transform: scale(0.5);
+  transform: translateY(-200%);
+  transition: opacity 0.2s, transform 0.8s;
+  overflow-y: auto;
+  height: 100%;
 }
 
 .info-wrapper {
@@ -151,7 +193,7 @@ export default {
   right: 80px;
   top: 85px;
 }
-.info-wrapper .bi-info {
+.info-wrapper .bi-info-circle {
   color: white;
   font-size: 30px;
 }

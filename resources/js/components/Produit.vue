@@ -111,7 +111,6 @@ export default {
     "web_url",
     "storage_url",
   ],
-  data() {},
 };
 </script>
 

@@ -5,11 +5,10 @@
       v-model="slide"
       :interval="40000"
       controls
-      indicators
       background="#ababab"
-      img-width="1024"
-      img-height="200"
-      style="text-shadow: 1px 1px 2px #333; height: 250px"
+      img-width="1903"
+      img-height="330"
+      style="text-shadow: 1px 1px 2px #333;"
       @sliding-start="onSlideStart"
       @sliding-end="onSlideEnd"
     >
@@ -23,17 +22,6 @@
 
       <!-- Slides with img slot -->
       <!-- Note the classes .d-block and .img-fluid to prevent browser default image alignment -->
-      <b-carousel-slide>
-        <template #img>
-          <img
-            class="d-block img-fluid w-100"
-            width="1024"
-            height="200"
-            src="../storage/img/huge.png"
-            alt="image slot"
-          />
-        </template>
-      </b-carousel-slide>
 
       <!-- Slide with blank fluid image to maintain slide aspect ratio -->
       <!-- <b-carousel-slide caption="Blank Image" img-blank img-alt="Blank image">
